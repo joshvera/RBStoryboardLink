@@ -58,7 +58,12 @@
              self.sceneIdentifier);
     
     self.scene = scene;
-    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UIViewController *scene = self.scene; 
+
     // Adjusts the frame of the child view.
     CGRect frame = self.view.frame;
     CGRect linkedFrame = scene.view.frame;
@@ -135,14 +140,6 @@
     self.wantsFullScreenLayout = scene.wantsFullScreenLayout;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // adds the scene's view
-    [self.view addSubview:[self.scene view]];
-    [self.scene didMoveToParentViewController:self];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     
     // The linked scene defines the rotation. 
@@ -160,4 +157,5 @@
     // The linked scene defines supported orientations.
     return [self.scene supportedInterfaceOrientations];
 }
+
 @end
